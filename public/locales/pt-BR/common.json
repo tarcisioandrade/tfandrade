@@ -1,0 +1,21 @@
+{
+  "homeTitle": "Portfólio",
+  "home": "Início",
+  "projects": "Projetos",
+  "contact": "Contato",
+  "skills": "Tecnologias",
+  "skillsTitle": "Tecnologias e Conhecimentos",
+  "buttonCV": "Download CV",
+  "projectsTitle": "Projetos",
+  "contactTitle": "Contato",
+  "contactSubTitle": "Envie sua mensagem",
+  "form": {
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "button": "Enviar Mensagem",
+    "buttonSending": "Enviando Mensagem...",
+    "messageSended": "Mensagem Enviada!",
+    "messageError": "Falha ao enviar mensagem. Por favor, tente novamente."
+  }
+}

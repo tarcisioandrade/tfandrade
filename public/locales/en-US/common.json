@@ -1,0 +1,21 @@
+{
+  "homeTitle": "Portfolio",
+  "home": "Home",
+  "projects": "Projects",
+  "contact": "Contact",
+  "skills": "Skills",
+  "skillsTitle": "Technologies and Knowledge",
+  "buttonCV": "Download CV",
+  "projectsTitle": "Projects",
+  "contactTitle": "Contact",
+  "contactSubTitle": "Send your message",
+  "form": {
+    "name": "Name",
+    "email": "E-mail",
+    "message": "Message",
+    "button": "Send Message",
+    "buttonSending": "Sending Message...",
+    "messageSended": "Message Sent!",
+    "messageError": "Send Message Failed. Please try again."
+  }
+}
