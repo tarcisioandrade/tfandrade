@@ -1,29 +1,10 @@
 import ButtonLink from "@/components/ButtonLink";
+import SocialButtons from "@/components/SocialButtons";
 import { RouteParams } from "@/interfaces/route";
 import { getDictionary } from "@/lib/getDictionary";
 import { getProfileData } from "@/services/getProfileData";
 import { urlForImage } from "@sanity-local/lib/image";
-import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-
-type SocialsIcons = {
-  [key: string]: {
-    icon: JSX.Element;
-  };
-};
-
-const socials: SocialsIcons = {
-  Email: {
-    icon: <Mail size={20} strokeWidth={1.5} />,
-  },
-  Github: {
-    icon: <Github size={20} strokeWidth={1.5} />,
-  },
-  Linkedin: {
-    icon: <Linkedin size={20} strokeWidth={1.5} />,
-  },
-};
 
 export default async function Home({ params }: RouteParams) {
   const profileData = await getProfileData(params.lang);
@@ -51,15 +32,7 @@ export default async function Home({ params }: RouteParams) {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          {profileData.socials.map((social) => (
-            <Link
-              href={social.link}
-              key={social._id}
-              className="flex h-12 w-12 items-center justify-center rounded border border-zinc-800 text-zinc-500 transition-all hover:bg-zinc-800/20 hover:text-white"
-            >
-              {socials[social.title].icon}
-            </Link>
-          ))}
+          <SocialButtons socials={profileData.socials} />
           <ButtonLink className="w-64" href={`${profileData.curriculum}?dl=`}>
             {t.buttonCV}
           </ButtonLink>
