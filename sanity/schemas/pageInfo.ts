@@ -10,6 +10,7 @@ const pageInfo = {
       title: "Role",
       type: "localeString",
     },
+    { name: "heroTitle", title: "Hero Title", type: "localeString" },
     {
       name: "intro",
       title: "Intro",
