@@ -1,7 +1,7 @@
 import React from "react";
 import MenuLinks from "./MenuLinks";
 import { getProfileData } from "@/services/getProfileData";
-import { Home } from "lucide-react";
+import { Code2, FolderGit2, Home, Mail } from "lucide-react";
 import Link from "next/link";
 
 const Sidebar = async () => {
@@ -30,17 +30,17 @@ export const links = [
     path: "/",
   },
   {
-    icon: <Home size={20} strokeWidth={1.5} />,
+    icon: <FolderGit2 size={20} strokeWidth={1.5} />,
     name: "Projetos",
-    path: "/projects",
+    path: "/project",
   },
   {
-    icon: <Home size={20} strokeWidth={1.5} />,
+    icon: <Code2 size={20} strokeWidth={1.5} />,
     name: "Conhecimentos",
     path: "/skills",
   },
   {
-    icon: <Home size={20} strokeWidth={1.5} />,
+    icon: <Mail size={20} strokeWidth={1.5} />,
     name: "Contato",
     path: "/contact",
   },
