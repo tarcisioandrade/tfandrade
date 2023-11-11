@@ -7,6 +7,19 @@ const project = {
       type: "string",
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "projectTitle",
+      },
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "localeText",
+    },
+    {
       description: "Resolution Preference 1029x625",
       name: "projectImage",
       options: {
