@@ -42,6 +42,13 @@ const pageInfo = {
       title: "Skills",
       type: "array",
     },
+
+    {
+      name: "projects",
+      of: [{ to: { type: "projects" }, type: "reference" }],
+      title: "Projects",
+      type: "array",
+    },
   ],
   name: "pageInfo",
   title: "PageInfo",
