@@ -9,8 +9,13 @@ export const getProfileData = async (language: string = "pt") => {
     "intro": intro.${locale},
     "role": role.${locale},
     "heroTitle": heroTitle.${locale},
+    "slug": slug.current,
     skills[]->,
     socials[] ->,
+    projects[] -> {
+      ...,
+      "slug": slug.current
+    },
     "curriculum": curriculum.asset->url
   }`;
 
