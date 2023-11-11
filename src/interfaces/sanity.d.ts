@@ -27,6 +27,7 @@ export interface PageInfo extends SanityBody {
   curriculum: Curriculum;
   skills: Skill[];
   socials: Social[];
+  projects: Project[];
 }
 
 export interface Skill extends SanityBody {
@@ -39,6 +40,9 @@ export interface Skill extends SanityBody {
 export interface Tag extends SanityBody {
   _type: "tag";
   title: string;
+  image: Image | undefined;
+  category: TagCategory;
+  link: string;
 }
 
 export interface Social extends SanityBody {
@@ -53,5 +57,20 @@ export interface Project extends SanityBody {
   projectGithubLink: string;
   projectTitle: string;
   projectImage: Image;
+  description: string;
+  slug: string;
   tags: Tag[];
 }
+
+export interface TagCategory extends SanityBody {
+  _type: "tagCategory";
+  name: Category;
+  title: string;
+}
+
+export type Category =
+  | "language"
+  | "backend"
+  | "mobile"
+  | "frontend"
+  | "others";

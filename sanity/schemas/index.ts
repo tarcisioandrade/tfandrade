@@ -4,6 +4,7 @@ import project from "./project";
 import skill from "./skill";
 import social from "./social";
 import tag from "./tag";
+import tagCategory from "./tag-category";
 
 const schemas = [
   pageInfo,
@@ -11,6 +12,7 @@ const schemas = [
   skill,
   social,
   tag,
+  tagCategory,
   localeString,
   localeText,
 ];
