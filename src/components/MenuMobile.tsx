@@ -22,10 +22,10 @@ const MenuMobile = () => {
       <div
         className={clsx(
           "absolute left-0 right-0  top-[63px] z-[40] overflow-hidden bg-darker",
-          menuOpen ? "animate-menu-open" : "animate-menu-close hidden",
+          menuOpen ? "animate-menu-open" : "hidden animate-menu-close",
         )}
       >
-        <MenuLinks links={links} />
+        <MenuLinks links={links} trigger={toggleMenuOpen} />
       </div>
     </>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 
@@ -7,9 +9,10 @@ type Props = {
     name: string;
     path: string;
   }[];
+  trigger?: () => void;
 };
 
-const MenuLinks = ({ links }: Props) => {
+const MenuLinks = ({ links, trigger }: Props) => {
   return (
     <ul>
       {links.map((link) => (
@@ -20,10 +23,11 @@ const MenuLinks = ({ links }: Props) => {
           <Link
             href={link.path}
             className="group block px-8 py-5 transition-all hover:bg-zinc-800/20"
+            onClick={trigger}
           >
             <span className="flex items-center gap-3 text-zinc-500 transition-colors group-hover:text-white">
               {link.icon}
-              <p className="font-semibold">{link.name}</p>
+              <p className="font-medium">{link.name}</p>
             </span>
           </Link>
         </li>
