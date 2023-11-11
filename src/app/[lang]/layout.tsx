@@ -28,9 +28,7 @@ export default async function RootLayout({
           <MenuMobile />
         </MobileBar>
         <Sidebar />
-        <main className="px-4 pt-24 sm:px-12 lg:p-12 lg:pl-[calc(250px+50px)] lg:pr-[50px]">
-          {children}
-        </main>
+        <main className="lg:pl-[calc(250px)]">{children}</main>
       </body>
     </html>
   );
