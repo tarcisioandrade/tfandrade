@@ -1,13 +1,11 @@
-import React, { ComponentProps, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
-type Props = {
-  children: ReactNode;
-  href: string;
-  className?: string;
-  target?: React.HTMLAttributeAnchorTarget;
-};
+type Props = LinkProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    children: ReactNode;
+  };
 
 const ButtonLink = ({ children, href, className, ...props }: Props) => {
   return (
