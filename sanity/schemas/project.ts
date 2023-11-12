@@ -20,14 +20,15 @@ const project = {
       type: "localeText",
     },
     {
-      description: "Resolution Preference 1029x625",
-      name: "projectImage",
+      description:
+        "Resolution Preference 1029x625. A primeira imagem fica na home.",
+      name: "images",
       options: {
         hotspot: true,
       },
-      title: "ProjectImage",
-
-      type: "image",
+      title: "Galery",
+      type: "array",
+      of: [{ type: "image" }],
     },
     {
       name: "projectLink",
@@ -38,6 +39,12 @@ const project = {
       name: "projectGithubLink",
       title: "GithubLink",
       type: "url",
+    },
+    {
+      name: "category",
+      to: [{ type: "projectCategory" }],
+      title: "Category",
+      type: "reference",
     },
     {
       name: "tags",
