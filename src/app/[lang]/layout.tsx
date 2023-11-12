@@ -1,11 +1,10 @@
+import MenuMobile from "@/components/MenuMobile";
+import MobileBar from "@/components/MobileBar";
 import Sidebar from "@/components/Sidebar";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 
 import "../globals.css";
-
-import MenuMobile from "@/components/MenuMobile";
-import MobileBar from "@/components/MobileBar";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -27,6 +26,8 @@ export default async function RootLayout({
         <MobileBar>
           <MenuMobile />
         </MobileBar>
+        {/* DIV TO FIX:HEADER FIXED HEIGHT */}
+        <div className="invisible h-16 lg:hidden" />
         <Sidebar />
         <main className="lg:pl-[calc(250px)]">{children}</main>
       </body>
