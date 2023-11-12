@@ -21,6 +21,7 @@ export interface PageInfo extends SanityBody {
   _type: "pageInfo";
   name: string;
   role: string;
+  employee: boolean;
   heroTitle: string;
   intro: string;
   avatarImage: Image;
@@ -56,7 +57,8 @@ export interface Project extends SanityBody {
   projectLink: string;
   projectGithubLink: string;
   projectTitle: string;
-  projectImage: Image;
+  category: ProjectCategory;
+  images: Image[];
   description: string;
   slug: string;
   tags: Tag[];
@@ -64,6 +66,12 @@ export interface Project extends SanityBody {
 
 export interface TagCategory extends SanityBody {
   _type: "tagCategory";
+  name: Category;
+  title: string;
+}
+
+export interface ProjectCategory extends SanityBody {
+  _type: "projectCategory";
   name: Category;
   title: string;
 }

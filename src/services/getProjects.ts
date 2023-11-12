@@ -8,6 +8,10 @@ export const getProjects = async (language: string = "pt") => {
   *[_type == "projects"] {
     ...,
     "slug": slug.current,
+    category -> {
+      "name": name,
+      "title": title.${locale}
+    },
     tags[] ->
   } | order(_updatedAt desc)
 `;
@@ -25,6 +29,10 @@ export const getProjectBySlug = async (slug: string, language = "pt") => {
     ...,
     "slug": slug.current,
     "description": description.${locale},
+    category -> {
+      "name": name,
+      "title": title.${locale}
+    },
     tags[] -> {
       ...,
       category -> {
