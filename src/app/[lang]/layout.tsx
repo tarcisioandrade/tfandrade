@@ -6,6 +6,8 @@ import { Outfit } from "next/font/google";
 
 import "../globals.css";
 
+import Footer from "@/components/Footer";
+
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,6 +32,7 @@ export default async function RootLayout({
         <div className="invisible h-16 lg:hidden" />
         <Sidebar />
         <main className="lg:pl-[calc(250px)]">{children}</main>
+        <Footer />
       </body>
     </html>
   );
