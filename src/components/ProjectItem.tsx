@@ -14,7 +14,7 @@ const ProjectItem = ({ project }: Props) => {
       <Link href={`project/${project.slug}`} className="group block">
         <div className="overflow-hidden rounded-lg">
           <Image
-            src={urlForImage(project.projectImage)
+            src={urlForImage(project.images[0])
               .width(1029)
               .height(625)
               .format("webp")
@@ -26,7 +26,7 @@ const ProjectItem = ({ project }: Props) => {
           />
         </div>
         <p className="mb-1 mt-6 text-xs font-semibold uppercase tracking-widest text-zinc-500">
-          Website
+          {project.category.title}
         </p>
         <p className="text-xl transition-colors group-hover:text-green-500">
           {project.projectTitle}
