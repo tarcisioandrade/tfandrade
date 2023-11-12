@@ -10,7 +10,7 @@ const Section = ({ children, ...props }: Props) => {
     <div className="border-b border-b-zinc-800">
       <section
         {...props}
-        className={cn("pb-6 pl-4 pr-4 pt-6 sm:px-12 lg:p-12", props.className)}
+        className={cn("px-4 py-6 sm:px-12 lg:p-12", props.className)}
       >
         {children}
       </section>

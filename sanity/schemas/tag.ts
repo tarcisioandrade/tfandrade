@@ -19,7 +19,6 @@ const tag = {
       title: "Image",
       type: "image",
     },
-
     {
       name: "category",
       to: [{ type: "tagCategory" }],
