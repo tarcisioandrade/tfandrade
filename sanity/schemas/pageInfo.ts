@@ -10,6 +10,12 @@ const pageInfo = {
       title: "Role",
       type: "localeString",
     },
+    {
+      name: "employee",
+      title: "Employee",
+      description: "Ja está trabalhando?",
+      type: "boolean",
+    },
     { name: "heroTitle", title: "Hero Title", type: "localeString" },
     {
       name: "intro",

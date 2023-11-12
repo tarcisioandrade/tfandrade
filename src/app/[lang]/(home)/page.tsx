@@ -14,7 +14,7 @@ export default async function Home({ params }: RouteParams) {
 
   return (
     <>
-      <Section className="pt-24">
+      <Section>
         <div className="flex flex-col gap-12">
           <div className="w-fit overflow-hidden rounded">
             <Image
@@ -42,15 +42,15 @@ export default async function Home({ params }: RouteParams) {
           </div>
         </div>
 
-        <div className="absolute right-4 top-24 flex items-center gap-3 self-start whitespace-nowrap rounded bg-green-700/10 px-4 py-2 text-green-500 sm:right-12 lg:top-12">
-          <div className="h-2 w-2 rounded-full bg-current" />
-          Open to work
-        </div>
+        {!profileData.employee ? (
+          <div className="absolute right-4 top-24 flex items-center gap-3 self-start whitespace-nowrap rounded bg-green-700/10 px-4 py-2 text-green-500 sm:right-12 lg:top-12">
+            <div className="h-2 w-2 rounded-full bg-current" />
+            Open to work
+          </div>
+        ) : null}
       </Section>
-
       <Section>
         <h2 className="text-3xl">Projetos</h2>
-
         <div className="mt-12 flex grid-cols-1 flex-col gap-12 sm:grid sm:grid-cols-2 xl:grid-cols-3">
           {profileData.projects.map((project) => (
             <ProjectItem key={project._id} project={project} />
