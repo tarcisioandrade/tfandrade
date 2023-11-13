@@ -8,8 +8,8 @@ const MobileBar = async ({ children }: { children: ReactNode }) => {
   return (
     <header className="fixed bottom-0 left-0 right-0 top-0 z-50 h-16 border-b border-b-zinc-800 bg-darker lg:hidden">
       <div className="flex h-full items-center justify-between lg:static lg:h-[117px]">
-        <Link href="/" className="group block px-4 lg:px-8">
-          <p className="text-xl group-hover:text-green-500">
+        <Link href="/" className="group block px-6 lg:px-8">
+          <p className="text-xl transition-colors group-hover:text-green-500">
             {profileData.name}
           </p>
         </Link>

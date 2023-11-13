@@ -14,11 +14,7 @@ const ProjectItem = ({ project }: Props) => {
       <Link href={`project/${project.slug}`} className="group block">
         <div className="overflow-hidden rounded-lg">
           <Image
-            src={urlForImage(project.images[0])
-              .width(1029)
-              .height(625)
-              .format("webp")
-              .url()}
+            src={urlForImage(project.images[0]).format("webp").url()}
             alt={project.projectTitle}
             width={1029}
             height={625}
