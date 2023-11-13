@@ -49,12 +49,22 @@ const config: Config = {
             "clip-path": "polygon(0 0, 100% 0, 100% 0, 0 0)",
           },
         },
+
+        "toast-show": {
+          from: {
+            top: "-10px",
+          },
+          to: {
+            top: "16px",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "menu-open": "menu-open 0.3s ease-out forwards",
         "menu-close": "menu-close 0.3s ease-out forwards",
+        "toast-show": "toast-show 0.3s ease-out forwards",
       },
       colors: {
         darker: "rgb(18,18,18)",
