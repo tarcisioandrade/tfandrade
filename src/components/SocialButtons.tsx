@@ -1,7 +1,7 @@
 import React from "react";
+import ButtonLink from "./ButtonLink";
 import { Social } from "@/interfaces/sanity";
 import { Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
 
 type Props = {
   socials: Social[];
@@ -27,13 +27,15 @@ const socialsIcons: SocialsIcons = {
 
 const SocialButtons = ({ socials }: Props) => {
   return socials.map((social) => (
-    <Link
+    <ButtonLink
       href={social.link}
       key={social._id}
-      className="flex h-12 w-12 items-center justify-center rounded border border-zinc-800 text-zinc-500 transition-all hover:bg-zinc-800/20 hover:text-white"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="h-12 w-12 px-0"
     >
       {socialsIcons[social.title].icon}
-    </Link>
+    </ButtonLink>
   ));
 };
 
