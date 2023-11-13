@@ -7,10 +7,13 @@ type Props = ComponentProps<"div"> & {
 
 const Section = ({ children, ...props }: Props) => {
   return (
-    <section className="border-b border-b-zinc-800">
+    <section className="border-b border-b-zinc-800 lg:px-12">
       <div
         {...props}
-        className={cn("px-4 py-6 sm:px-12 lg:p-12", props.className)}
+        className={cn(
+          "mx-auto max-w-[1440px] px-6 py-8 sm:p-12 lg:px-0 lg:py-12",
+          props.className,
+        )}
       >
         {children}
       </div>

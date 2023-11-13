@@ -11,7 +11,13 @@ export const getProfileData = async (language: string = "pt") => {
     "heroTitle": heroTitle.${locale},
     "category": category.${locale},
     "slug": slug.current,
-    skills[]->,
+    skills[]-> {
+      ...,
+      category -> {
+        "name": name,
+        "title": title.${locale},
+      }
+    },
     socials[] ->,
     projects[] -> {
       ...,
