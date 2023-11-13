@@ -1,6 +1,7 @@
 import ButtonLink from "@/components/ButtonLink";
 import ProjectItem from "@/components/ProjectItem";
 import Section from "@/components/Section";
+import SkillBadge from "@/components/SkillBadge";
 import SocialButtons from "@/components/SocialButtons";
 import { RouteParams } from "@/interfaces/route";
 import { getDictionary } from "@/lib/getDictionary";
@@ -51,7 +52,7 @@ export default async function Home({ params }: RouteParams) {
       </Section>
       <Section>
         <h2 className="text-3xl">Projetos</h2>
-        <div className="mt-12 flex grid-cols-1 flex-col gap-12 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 flex flex-col gap-12 sm:grid sm:grid-cols-2 xl:grid-cols-3">
           {profileData.projects.map((project) => (
             <ProjectItem key={project._id} project={project} />
           ))}
@@ -62,7 +63,16 @@ export default async function Home({ params }: RouteParams) {
       </Section>
 
       <Section>
-        <p>oi</p>
+        <h2 className="text-3xl">Tecnologias e Conhecimentos</h2>
+
+        <div className="mt-12 flex flex-col gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+          {profileData.skills.map((skill) => (
+            <SkillBadge key={skill._id} skill={skill} />
+          ))}
+        </div>
+        <ButtonLink href="/skills" className="mt-12 text-white">
+          Ver Todos
+        </ButtonLink>
       </Section>
     </>
   );
