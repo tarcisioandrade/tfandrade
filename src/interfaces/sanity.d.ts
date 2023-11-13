@@ -13,6 +13,11 @@ interface Image {
   };
 }
 
+interface CategoryBody {
+  name: Category;
+  title: string;
+}
+
 interface Curriculum {
   curriculum: string;
 }
@@ -36,6 +41,8 @@ export interface Skill extends SanityBody {
   image: Image;
   slug: string;
   title: string;
+  link: string;
+  category: SkillCategory;
 }
 
 export interface Tag extends SanityBody {
@@ -64,16 +71,16 @@ export interface Project extends SanityBody {
   tags: Tag[];
 }
 
-export interface TagCategory extends SanityBody {
+export interface TagCategory extends SanityBody, CategoryBody {
   _type: "tagCategory";
-  name: Category;
-  title: string;
 }
 
-export interface ProjectCategory extends SanityBody {
+export interface ProjectCategory extends SanityBody, CategoryBody {
   _type: "projectCategory";
-  name: Category;
-  title: string;
+}
+
+export interface SkillCategory extends SanityBody, CategoryBody {
+  _type: "skill";
 }
 
 export type Category =
