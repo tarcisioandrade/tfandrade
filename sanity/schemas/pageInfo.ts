@@ -54,6 +54,7 @@ const pageInfo = {
       of: [{ to: { type: "projects" }, type: "reference" }],
       title: "Projects",
       type: "array",
+      validation: (Rule: any) => Rule.max(3),
     },
   ],
   name: "pageInfo",
