@@ -3,10 +3,18 @@ import BackButton from "@/components/BackButton";
 import ButtonLink from "@/components/ButtonLink";
 import Section from "@/components/Section";
 import TechnologyTags from "@/components/TechnologyTags";
-import { getProjectBySlug } from "@/services/getProjects";
+import { getProjectBySlug, getProjects } from "@/services/getProjects";
 import { urlForImage } from "@sanity-local/lib/image";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const posts = await getProjects();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
   const project = await getProjectBySlug(params.slug);
