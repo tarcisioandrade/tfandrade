@@ -7,9 +7,9 @@ const ProjectsPage = async () => {
   const projects = await getProjects();
 
   return (
-    <Section className="pt-24">
+    <Section>
       <h1 className="text-4xl">Projetos</h1>
-      <div className="mt-12 flex grid-cols-1 flex-col gap-12 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-12 flex flex-col gap-12 sm:grid sm:grid-cols-2 xl:grid-cols-3">
         {projects.map((project) => (
           <ProjectItem key={project._id} project={project} />
         ))}
