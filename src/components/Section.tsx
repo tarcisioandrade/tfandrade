@@ -11,7 +11,7 @@ const Section = ({ children, ...props }: Props) => {
       <div
         {...props}
         className={cn(
-          "mx-auto max-w-[1440px] px-6 py-8 sm:p-12 lg:px-0 lg:py-12",
+          "relative mx-auto max-w-[1440px] animate-container-enter px-6 py-8 sm:p-12 lg:px-0",
           props.className,
         )}
       >
