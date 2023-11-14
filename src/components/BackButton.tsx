@@ -9,7 +9,7 @@ const BackButton = () => {
 
   return (
     <button
-      className="group flex h-12 items-center gap-1 text-zinc-500 transition-colors hover:text-green-500"
+      className="hover:text-neonGreen group flex h-12 items-center gap-1 text-zinc-500 transition-colors"
       onClick={() => router.back()}
     >
       <ArrowLeft size={20} strokeWidth={1.5} />

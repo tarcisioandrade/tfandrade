@@ -49,13 +49,22 @@ const config: Config = {
             "clip-path": "polygon(0 0, 100% 0, 100% 0, 0 0)",
           },
         },
-
         "toast-show": {
           from: {
             top: "-10px",
           },
           to: {
             top: "16px",
+          },
+        },
+        "container-enter": {
+          from: {
+            left: "-10px",
+            opacity: "0",
+          },
+          to: {
+            left: "0",
+            opacity: "1",
           },
         },
       },
@@ -65,9 +74,11 @@ const config: Config = {
         "menu-open": "menu-open 0.3s ease-out forwards",
         "menu-close": "menu-close 0.3s ease-out forwards",
         "toast-show": "toast-show 0.3s ease-out forwards",
+        "container-enter": "container-enter 0.3s ease-in forwards",
       },
       colors: {
         darker: "rgb(18,18,18)",
+        neonGreen: "#A6FF00",
       },
     },
   },
