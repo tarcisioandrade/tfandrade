@@ -15,13 +15,19 @@ const project = {
       },
     },
     {
+      name: "published",
+      title: "Published",
+      type: "boolean",
+      initialValue: true,
+    },
+    {
       name: "description",
       title: "Description",
       type: "localeText",
     },
     {
       description:
-        "Resolution Preference 1029x625. A primeira imagem fica na home.",
+        "Resolution Preference 1155x932. A primeira imagem fica na home.",
       name: "images",
       options: {
         hotspot: true,

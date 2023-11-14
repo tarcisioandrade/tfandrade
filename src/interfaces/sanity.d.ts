@@ -64,6 +64,7 @@ export interface Project extends SanityBody {
   projectLink: string;
   projectGithubLink: string;
   projectTitle: string;
+  published: boolean;
   category: ProjectCategory;
   images: Image[];
   description: string;
