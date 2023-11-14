@@ -3,7 +3,18 @@ import Form from "@/components/Form";
 import Section from "@/components/Section";
 import { contactFormSubmit } from "@/services/actions";
 import { getProfileData } from "@/services/getProfileData";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  return {
+    title: "Tarcisio | Contato",
+  };
+}
 
 const ContactPage = async () => {
   const email = (await getProfileData()).socials.find(
@@ -18,7 +29,7 @@ const ContactPage = async () => {
         ou um e-mail para{" "}
         <Link
           href={email?.link}
-          className="inline-block text-white transition-colors hover:text-green-500"
+          className="hover:text-neonGreen inline-block text-white transition-colors"
         >
           {/* O Link vem assim: mailto:email@gmail.com, por isso quebrei no ":" para pegar só o e-mail */}
           {email?.link.split(":")[1]}

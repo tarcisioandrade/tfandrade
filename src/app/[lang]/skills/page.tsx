@@ -2,6 +2,17 @@ import React from "react";
 import Section from "@/components/Section";
 import SkillBadge from "@/components/SkillBadge";
 import { getSkills } from "@/services/getSkills";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  return {
+    title: "Tarcisio | Conhecimentos",
+  };
+}
 
 const SkillPage = async ({ params }: { params: { lang: string } }) => {
   const skills = await getSkills(params.lang);

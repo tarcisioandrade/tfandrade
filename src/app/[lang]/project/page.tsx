@@ -2,6 +2,17 @@ import React from "react";
 import ProjectItem from "@/components/ProjectItem";
 import Section from "@/components/Section";
 import { getProjects } from "@/services/getProjects";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  return {
+    title: "Tarcisio | Projetos",
+  };
+}
 
 const ProjectsPage = async () => {
   const projects = await getProjects();

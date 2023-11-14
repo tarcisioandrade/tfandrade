@@ -5,15 +5,34 @@ import Section from "@/components/Section";
 import TechnologyTags from "@/components/TechnologyTags";
 import { getProjectBySlug, getProjects } from "@/services/getProjects";
 import { urlForImage } from "@sanity-local/lib/image";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const posts = await getProjects();
+  const projects = await getProjects();
 
-  return posts.map((post) => ({
+  return projects.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string; lang: string };
+}): Promise<Metadata> {
+  const project = await getProjectBySlug(params.slug, params.lang);
+
+  if (!project) notFound();
+
+  return {
+    title: project.projectTitle,
+    description: project.description,
+    openGraph: {
+      images: urlForImage(project.images[0].asset).format("webp").url(),
+    },
+  };
 }
 
 const ProjectPage = async ({ params }: { params: { slug: string } }) => {
