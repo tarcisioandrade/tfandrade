@@ -7,7 +7,7 @@ export const getProjects = unstable_cache(
     const locale = language.split("-")[0];
 
     const query = `
-  *[_type == "projects"] {
+  *[_type == "projects" && published == true] {
     ...,
     "slug": slug.current,
     category -> {
@@ -31,7 +31,7 @@ export const getProjectBySlug = unstable_cache(
     const locale = language.split("-")[0];
 
     const query = `
-  *[_type == "projects" && slug.current == "${slug}"] {
+  *[_type == "projects" && slug.current == "${slug}" && published == true] {
     ...,
     "slug": slug.current,
     "description": description.${locale},
