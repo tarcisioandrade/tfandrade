@@ -5,7 +5,7 @@ let defaultLocale = "pt-BR";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
+  // TODO: Implementar i18n
   if (pathname.includes("admin")) return;
 
   const pathnameHasLocale = locales.some(
