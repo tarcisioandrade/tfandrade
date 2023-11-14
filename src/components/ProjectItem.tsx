@@ -10,25 +10,23 @@ type Props = {
 
 const ProjectItem = ({ project }: Props) => {
   return (
-    <div>
-      <Link href={`project/${project.slug}`} className="group block">
-        <div className="overflow-hidden rounded-lg">
-          <Image
-            src={urlForImage(project.images[0]).format("webp").url()}
-            alt={project.projectTitle}
-            width={1029}
-            height={625}
-            className="transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-        </div>
-        <p className="mb-1 mt-6 text-xs font-semibold uppercase tracking-widest text-zinc-500">
-          {project.category.title}
-        </p>
-        <p className="text-xl transition-colors group-hover:text-green-500">
-          {project.projectTitle}
-        </p>
-      </Link>
-    </div>
+    <Link href={`project/${project.slug}`} className="group block">
+      <div className="overflow-hidden rounded-lg xl:max-h-[313px] xl:max-w-[448px]">
+        <Image
+          src={urlForImage(project.images[0]).format("webp").url()}
+          alt={project.projectTitle}
+          width={1155}
+          height={932}
+          className="transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+      </div>
+      <p className="mb-1 mt-6 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+        {project.category.title}
+      </p>
+      <p className="group-hover:text-neonGreen text-xl transition-colors">
+        {project.projectTitle}
+      </p>
+    </Link>
   );
 };
 
