@@ -8,6 +8,7 @@ import { getDictionary } from "@/lib/getDictionary";
 import { getProfileData } from "@/services/getProfileData";
 import { urlForImage } from "@sanity-local/lib/image";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({ params }: RouteParams) {
   const profileData = await getProfileData(params.lang);
@@ -20,9 +21,9 @@ export default async function Home({ params }: RouteParams) {
           <div className="w-fit overflow-hidden rounded">
             <Image
               src={urlForImage(profileData.avatarImage)
-                .format("webp")
                 .width(100)
                 .height(100)
+                .format("webp")
                 .url()}
               alt={profileData.name}
               width={100}
@@ -42,12 +43,14 @@ export default async function Home({ params }: RouteParams) {
             </ButtonLink>
           </div>
         </div>
-
         {!profileData.employee ? (
-          <div className="absolute right-4 top-24 flex items-center gap-3 self-start whitespace-nowrap rounded bg-green-700/10 px-4 py-2 text-green-500 sm:right-12 lg:top-12">
+          <Link
+            href="/contact"
+            className="absolute right-4 top-8 flex items-center gap-3 self-start whitespace-nowrap rounded bg-green-700/10 px-4 py-2 text-green-500 transition-colors hover:bg-green-700/20 sm:right-12 lg:top-12"
+          >
             <div className="h-2 w-2 rounded-full bg-current" />
             Open to work
-          </div>
+          </Link>
         ) : null}
       </Section>
       <Section>
@@ -64,7 +67,6 @@ export default async function Home({ params }: RouteParams) {
 
       <Section>
         <h2 className="text-3xl">Tecnologias e Conhecimentos</h2>
-
         <div className="mt-12 flex flex-col gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-4">
           {profileData.skills.map((skill) => (
             <SkillBadge key={skill._id} skill={skill} />
