@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     `https://${process.env.VERCEL_URL}` ?? "http://localhost:3000",
   ),
+  openGraph: {
+    images: "/ogdefault.jpg",
+  },
 };
 
 export function generateStaticParams() {
