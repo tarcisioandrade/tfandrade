@@ -34,6 +34,7 @@ const SocialButtons = ({ socials }: Props) => {
       rel="noopener noreferrer"
       className="h-12 w-12 px-0"
     >
+      <span className="sr-only">{social.title} Link</span>
       {socialsIcons[social.title].icon}
     </ButtonLink>
   ));
