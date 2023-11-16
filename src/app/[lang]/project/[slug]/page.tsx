@@ -6,14 +6,15 @@ import TechnologyTags from "@/components/TechnologyTags";
 import { getProjectBySlug, getProjects } from "@/services/getProjects";
 import { urlForImage } from "@sanity-local/lib/image";
 import { Metadata } from "next";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
 
-  return projects.map((post) => ({
-    slug: post.slug,
+  return projects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
@@ -35,8 +36,15 @@ export async function generateMetadata({
   };
 }
 
-const ProjectPage = async ({ params }: { params: { slug: string } }) => {
-  const project = await getProjectBySlug(params.slug);
+const ProjectPage = async ({
+  params,
+}: {
+  params: { slug: string; lang: string };
+}) => {
+  unstable_setRequestLocale(params.lang);
+
+  const project = await getProjectBySlug(params.slug, params.lang);
+  const t = await getTranslations();
 
   if (!project) {
     notFound();
@@ -68,7 +76,7 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
               target="_blank"
               href={project.projectGithubLink}
             >
-              Repositório
+              {t("buttons.repository")}
             </ButtonLink>
           </div>
         </div>
@@ -91,7 +99,7 @@ const ProjectPage = async ({ params }: { params: { slug: string } }) => {
         </div>
         <div>
           <div className="flex flex-col gap-6">
-            <h2 className="text-3xl">Tecnologias</h2>
+            <h2 className="text-3xl">{t("sectionTitles.technologies")}</h2>
             <TechnologyTags allTags={project.tags} category="language" />
             <TechnologyTags allTags={project.tags} category="frontend" />
             <TechnologyTags allTags={project.tags} category="mobile" />

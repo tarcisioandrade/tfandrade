@@ -2,17 +2,18 @@
 
 import React, { useState } from "react";
 import MenuLinks from "./MenuLinks";
-import { links } from "./Sidebar";
 import clsx from "clsx";
 import { Menu } from "lucide-react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const MenuMobile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenuOpen = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <>
+    <OutsideClickHandler onOutsideClick={closeMenu}>
       <button
         className="h-full border-l border-l-zinc-800 px-4 text-zinc-500"
         onClick={toggleMenuOpen}
@@ -25,9 +26,9 @@ const MenuMobile = () => {
           menuOpen ? "animate-menu-open" : "hidden animate-menu-close",
         )}
       >
-        <MenuLinks links={links} trigger={toggleMenuOpen} />
+        <MenuLinks trigger={toggleMenuOpen} />
       </div>
-    </>
+    </OutsideClickHandler>
   );
 };
 

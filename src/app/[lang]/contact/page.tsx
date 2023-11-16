@@ -4,6 +4,7 @@ import Section from "@/components/Section";
 import { contactFormSubmit } from "@/services/actions";
 import { getProfileData } from "@/services/getProfileData";
 import { Metadata } from "next";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 
 export async function generateMetadata({
@@ -11,25 +12,29 @@ export async function generateMetadata({
 }: {
   params: { lang: string };
 }): Promise<Metadata> {
+  const t = await getTranslations("linksNavigation");
+
   return {
-    title: "Tarcisio | Contato",
+    title: `Tarcisio | ${t("contact")}`,
   };
 }
 
-const ContactPage = async () => {
+const ContactPage = async ({ params }: { params: { lang: string } }) => {
+  unstable_setRequestLocale(params.lang);
+
   const email = (await getProfileData()).socials.find(
     (social) => social.title === "Email",
   )!;
+  const t = await getTranslations("contactPage");
 
   return (
     <Section className="mx-auto min-h-[calc(100vh_-100px)] max-w-[800px]">
-      <h1 className="text-4xl">Vamos Conversar</h1>
+      <h1 className="text-4xl">{t("title")}</h1>
       <p className="mt-4 text-zinc-500">
-        Se você tem uma oportunidade para mim, por favor, me envie uma mensagem
-        ou um e-mail para{" "}
+        {t("heroMessage")}{" "}
         <Link
           href={email?.link}
-          className="hover:text-neonGreen inline-block text-white transition-colors"
+          className="inline-block text-white transition-colors hover:text-neonGreen"
         >
           {/* O Link vem assim: mailto:email@gmail.com, por isso quebrei no ":" para pegar só o e-mail */}
           {email?.link.split(":")[1]}

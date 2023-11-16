@@ -67,6 +67,23 @@ const config: Config = {
             opacity: "1",
           },
         },
+
+        slideUpAndFade: {
+          from: { opacity: "0", transform: "translateY(2px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        slideRightAndFade: {
+          from: { opacity: "0", transform: "translateX(-2px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        slideDownAndFade: {
+          from: { opacity: "0", transform: "translateY(-2px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        slideLeftAndFade: {
+          from: { opacity: "0", transform: "translateX(2px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -75,6 +92,13 @@ const config: Config = {
         "menu-close": "menu-close 0.3s ease-out forwards",
         "toast-show": "toast-show 0.3s ease-out forwards",
         "container-enter": "container-enter 0.3s ease-in forwards",
+        slideUpAndFade: "slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideRightAndFade:
+          "slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideDownAndFade:
+          "slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        slideLeftAndFade:
+          "slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
       colors: {
         darker: "rgb(18,18,18)",

@@ -18,3 +18,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
 }
+
+.button-primary {
+  @apply flex h-12 w-full items-center justify-center rounded border border-zinc-800 px-4 text-zinc-500 transition-all duration-300 hover:bg-zinc-800/20 hover:text-white;
+}

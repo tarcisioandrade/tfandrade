@@ -1,31 +1,15 @@
-import { NextRequest } from "next/server";
+import { locales, pathnames } from "./locale-config";
+import createMiddleware from "next-intl/middleware";
 
-let locales = ["en-US", "pt-BR"];
-let defaultLocale = "pt-BR";
-
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  // TODO: Implementar i18n
-  if (pathname.includes("admin")) return;
-
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  );
-
-  if (pathnameHasLocale) return;
-
-  // Redirect if there is no locale
-  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-  // e.g. incoming request is /products
-  // The new URL is now /en-US/products
-  return Response.redirect(request.nextUrl);
-}
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales,
+  pathnames,
+  // Used when no locale matches
+  defaultLocale: "pt-BR",
+});
 
 export const config = {
-  matcher: [
-    // Skip all internal paths (_next)
-    "/((?!_next).*)",
-    // Optional: only run on root (/) URL
-    // '/'
-  ],
+  // Match only internationalized pathnames
+  matcher: ["/", "/(pt-BR|en-US)/:path*"],
 };
