@@ -16,7 +16,9 @@ const outfit = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
   description: "Site Portfólio",
   title: "Tarcisio Andrade",
-  metadataBase: new URL(process.env.VERCEL_URL ?? "localhost:3000"),
+  metadataBase: new URL(
+    `https://${process.env.VERCEL_URL}` ?? "http://localhost:3000",
+  ),
 };
 
 export function generateStaticParams() {
