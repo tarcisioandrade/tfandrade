@@ -13,12 +13,14 @@ const MenuMobile = () => {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <OutsideClickHandler onOutsideClick={closeMenu}>
+    <OutsideClickHandler onOutsideClick={closeMenu} display="contents">
       <button
         className="h-full border-l border-l-zinc-800 px-4 text-zinc-500"
         onClick={toggleMenuOpen}
+        type="button"
       >
         <Menu size={30} />
+        <span className="sr-only">Toggle Menu</span>
       </button>
       <div
         className={clsx(
