@@ -4,7 +4,7 @@ import { unstable_cache } from "next/cache";
 
 export const getProjects = unstable_cache(
   async (language: string = "pt") => {
-    const locale = language.split("-")[0];
+    const locale = language.split("-")[0] ?? language;
 
     const query = `
   *[_type == "projects" && published == true] {

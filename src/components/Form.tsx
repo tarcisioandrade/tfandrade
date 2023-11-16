@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import SubmitButton from "./SubmitButton";
 import { Toast, toastHandler } from "./Toast";
+import { useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
 
 type Props = {
@@ -11,23 +12,24 @@ type Props = {
 
 const Form = ({ formAction }: Props) => {
   const [state, action] = useFormState(formAction, { error: null });
+  const t = useTranslations("contactPage");
 
   useEffect(() => {
     if (!!state.error)
       toastHandler.show({
         type: "error",
-        title: "Mensagem não enviada",
-        message: "Alguma coisa aconteceu, por favor, tente novamente.",
+        title: t("toast.error.title"),
+        message: t("toast.error.message"),
       });
 
     if (!!state.success) {
       toastHandler.show({
         type: "success",
-        title: "Mensagem enviada",
-        message:
-          "Obrigado por entrar em contato! Responderei o mais rápido possivel.",
+        title: t("toast.succes.title"),
+        message: t("toast.succes.message"),
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
@@ -39,7 +41,7 @@ const Form = ({ formAction }: Props) => {
             type="text"
             name="name"
             className="w-full rounded bg-zinc-900 px-4 py-3"
-            placeholder="Nome"
+            placeholder={t("form.name")}
             required
           />
           <input
@@ -47,7 +49,7 @@ const Form = ({ formAction }: Props) => {
             type="email"
             name="email"
             className="w-full rounded bg-zinc-900 px-4 py-3"
-            placeholder="E-mail"
+            placeholder={t("form.email")}
             required
           />
         </div>
@@ -55,7 +57,7 @@ const Form = ({ formAction }: Props) => {
           id="message"
           name="message"
           className="min-h-[300px] w-full rounded bg-zinc-900 p-4"
-          placeholder="Mensagem"
+          placeholder={t("form.message")}
           required
         />
         <SubmitButton />

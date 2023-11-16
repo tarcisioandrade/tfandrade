@@ -2,10 +2,12 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { useFormStatus } from "react-dom";
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
+  const t = useTranslations("contactPage.form");
 
   return (
     <button
@@ -16,7 +18,7 @@ const SubmitButton = () => {
       )}
       disabled={pending}
     >
-      {pending ? "Enviando" : "Enviar"}
+      {pending ? t("buttonSeding") : t("button")}
     </button>
   );
 };

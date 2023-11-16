@@ -1,8 +1,8 @@
 import React from "react";
+import LinkWithLocale from "./LinkWithLocale";
 import { Project } from "@/interfaces/sanity";
 import { urlForImage } from "@sanity-local/lib/image";
 import Image from "next/image";
-import Link from "next/link";
 
 type Props = {
   project: Project;
@@ -10,7 +10,9 @@ type Props = {
 
 const ProjectItem = ({ project }: Props) => {
   return (
-    <Link href={`project/${project.slug}`} className="group block">
+    // @ts-expect-error
+    // TODO: A Lib esta com o erro de typagem em rotas dinamicas ex: rota/[slug]
+    <LinkWithLocale href={`/project/${project.slug}`} className="group block">
       <div className="overflow-hidden rounded-lg xl:max-h-[313px] xl:max-w-[448px]">
         <Image
           src={urlForImage(project.images[0]).format("webp").url()}
@@ -23,10 +25,10 @@ const ProjectItem = ({ project }: Props) => {
       <p className="mb-1 mt-6 text-xs font-semibold uppercase tracking-widest text-zinc-500">
         {project.category.title}
       </p>
-      <p className="group-hover:text-neonGreen text-xl transition-colors">
+      <p className="text-xl transition-colors group-hover:text-neonGreen">
         {project.projectTitle}
       </p>
-    </Link>
+    </LinkWithLocale>
   );
 };
 
