@@ -16,11 +16,14 @@ const outfit = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
   description: "Site Portfólio",
   title: "Tarcisio Andrade",
-  metadataBase: new URL(
-    `https://${process.env.VERCEL_URL}` ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(String(process.env.DOMAIN_URL)),
   openGraph: {
     images: "/ogdefault.jpg",
+    title: "Tarcisio Andrade",
+    description: "Site Portfólio",
+    type: "website",
+    alternateLocale: locales,
+    siteName: "Tarcisio Andrade",
   },
 };
 
