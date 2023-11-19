@@ -25,7 +25,7 @@ export default async function Home({ params }: RouteParams) {
   return (
     <>
       <Section>
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-8">
           <div className="w-fit overflow-hidden rounded">
             <Image
               src={urlForImage(profileData.avatarImage)
@@ -44,9 +44,14 @@ export default async function Home({ params }: RouteParams) {
               {profileData.intro}
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <SocialButtons socials={profileData.socials} />
-            <ButtonLink className="w-64" href={`${profileData.curriculum}?dl=`}>
+          <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-center">
+            <div className="flex items-center gap-4">
+              <SocialButtons socials={profileData.socials} />
+            </div>
+            <ButtonLink
+              className="sm:w-64"
+              href={`${profileData.curriculum}?dl=`}
+            >
               Download CV
             </ButtonLink>
           </div>

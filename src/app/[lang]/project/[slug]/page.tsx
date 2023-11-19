@@ -3,10 +3,15 @@ import BackButton from "@/components/BackButton";
 import ButtonLink from "@/components/ButtonLink";
 import Section from "@/components/Section";
 import TechnologyTags from "@/components/TechnologyTags";
+import { DOMAIN_URL } from "@/constants";
 import { getProjectBySlug, getProjects } from "@/services/getProjects";
 import { urlForImage } from "@sanity-local/lib/image";
 import { Metadata } from "next";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import {
+  getLocale,
+  getTranslations,
+  unstable_setRequestLocale,
+} from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -24,6 +29,7 @@ export async function generateMetadata({
   params: { slug: string; lang: string };
 }): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug, params.lang);
+  const locale = await getLocale(); // /pt-BR, /en-US
 
   if (!project) notFound();
 
@@ -32,6 +38,9 @@ export async function generateMetadata({
     description: project.description,
     openGraph: {
       images: urlForImage(project.images[0].asset).format("webp").url(),
+      description: project.description,
+      url: `${DOMAIN_URL}/${locale}/project/${params.slug}`,
+      title: project.projectTitle,
     },
   };
 }
