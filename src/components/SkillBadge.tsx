@@ -16,7 +16,7 @@ const SkillBadge = ({ skill }: Props) => {
       target={skill.link ? "_blank" : undefined}
       rel="noopener noreferrer"
       className={cn(
-        "flex items-center gap-3 rounded-lg border border-zinc-800 p-4 ring-green-500 transition-all duration-300 hover:bg-zinc-800/20 hover:text-white",
+        "flex items-center gap-3 rounded-lg border border-zinc-800 p-4 transition-all duration-300 hover:bg-zinc-800/20",
         !skill.link && "pointer-events-none",
       )}
     >
