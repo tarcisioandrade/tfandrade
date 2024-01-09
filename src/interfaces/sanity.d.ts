@@ -89,4 +89,13 @@ export type Category =
   | "backend"
   | "mobile"
   | "frontend"
+  | "fullstack"
+  | "cicd"
+  | "testing"
   | "others";
+
+export type CategoryFilters = {
+  _id: string;
+  name: Omit<Category, "others" | "fullstack" | "mobile">;
+  title: string;
+};
