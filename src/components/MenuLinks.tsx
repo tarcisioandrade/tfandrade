@@ -44,7 +44,7 @@ const MenuLinks = ({ trigger }: Props) => {
 
       <li className="last:border-b last:border-b-zinc-800 odd:border-y odd:border-y-zinc-800">
         <LinkWithLocale
-          href="/skills"
+          href={{ pathname: "/skills", query: { category: "all" } }}
           className="group block px-8 py-5 transition-all hover:bg-zinc-800/20"
           onClick={trigger}
         >
@@ -70,24 +70,5 @@ const MenuLinks = ({ trigger }: Props) => {
     </ul>
   );
 };
-
-const links = [
-  {
-    icon: <Home size={20} strokeWidth={1.5} />,
-    path: "/",
-  },
-  {
-    icon: <FolderGit2 size={20} strokeWidth={1.5} />,
-    path: "/project",
-  },
-  {
-    icon: <Code2 size={20} strokeWidth={1.5} />,
-    path: "/skills",
-  },
-  {
-    icon: <Mail size={20} strokeWidth={1.5} />,
-    path: "/contact",
-  },
-];
 
 export default MenuLinks;
