@@ -39,5 +39,9 @@
   "footer": {
     "developer": "Code by",
     "me": "Me"
+  },
+  "filter": {
+    "filterButton": "Filter",
+    "filterAllOption": "All"
   }
 }

@@ -39,5 +39,9 @@
   "footer": {
     "developer": "Desenvolvido por",
     "me": "Tarcisio Andrade"
+  },
+  "filter": {
+    "filterButton": "Filtro",
+    "filterAllOption": "Todos"
   }
 }
