@@ -16,9 +16,9 @@ const SkillsFilter = ({ filtersOptions }: Props) => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslations("filter");
 
   const queryCategory = searchParams.get("category");
-  const t = useTranslations("filter");
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
