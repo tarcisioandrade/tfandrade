@@ -19,5 +19,4 @@ export const getSkills = unstable_cache(
     return skills;
   },
   ["skills-data"],
-  { revalidate: 3600 },
 );
