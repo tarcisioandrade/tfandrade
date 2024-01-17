@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import SkillBadge from "@/components/SkillBadge";
 import { Skill } from "@/interfaces/sanity";
 import { useSearchParams } from "next/navigation";
@@ -27,9 +26,7 @@ const SkillsWrapper = ({ skills }: Props) => {
   return (
     <div className="mt-12 flex flex-col gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-4">
       {skillsFilteredByQueryParamsCategory.map((skill) => (
-        <Suspense key={skill._id} fallback={<p>oi</p>}>
-          <SkillBadge skill={skill} />
-        </Suspense>
+        <SkillBadge key={skill._id} skill={skill} />
       ))}
     </div>
   );

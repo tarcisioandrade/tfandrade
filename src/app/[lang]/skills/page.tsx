@@ -1,4 +1,3 @@
-import React from "react";
 import SkillsWrapper from "./skills-wrapper";
 import Section from "@/components/Section";
 import SkillsFilter from "@/components/SkillsFilter";
