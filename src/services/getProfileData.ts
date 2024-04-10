@@ -37,4 +37,5 @@ export const getProfileData = unstable_cache(
     return pageInfo;
   },
   ["pageinfo-data"],
+  { revalidate: 3600 },
 );

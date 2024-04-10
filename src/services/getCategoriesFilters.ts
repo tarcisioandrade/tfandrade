@@ -17,4 +17,5 @@ export const getCategoriesFilters = unstable_cache(
     return categories;
   },
   ["categories-filters-data"],
+  { revalidate: 3600 },
 );

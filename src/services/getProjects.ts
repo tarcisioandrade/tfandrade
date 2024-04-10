@@ -54,4 +54,5 @@ export const getProjectBySlug = unstable_cache(
     return project.length ? project[0] : null;
   },
   ["project-slug-data"],
+  { revalidate: 3600 },
 );
