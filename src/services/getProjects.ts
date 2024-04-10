@@ -1,12 +1,10 @@
 import { Project } from "../interfaces/sanity";
 import { createQuery } from "@/lib/createQuery";
-import { unstable_cache } from "next/cache";
 
-export const getProjects = unstable_cache(
-  async (language: string = "pt") => {
-    const locale = language.split("-")[0] ?? language;
+export const getProjects = async (language: string = "pt") => {
+  const locale = language.split("-")[0] ?? language;
 
-    const query = `
+  const query = `
   *[_type == "projects" && published == true] {
     ...,
     "slug": slug.current,
@@ -18,19 +16,15 @@ export const getProjects = unstable_cache(
   } | order(_updatedAt desc)
 `;
 
-    const projects = await createQuery<Project[]>(query);
+  const projects = await createQuery<Project[]>(query);
 
-    return projects;
-  },
-  ["projects-data"],
-  { revalidate: 3600 },
-);
+  return projects;
+};
 
-export const getProjectBySlug = unstable_cache(
-  async (slug: string, language = "pt") => {
-    const locale = language.split("-")[0];
+export const getProjectBySlug = async (slug: string, language = "pt") => {
+  const locale = language.split("-")[0];
 
-    const query = `
+  const query = `
   *[_type == "projects" && slug.current == "${slug}" && published == true] {
     ...,
     "slug": slug.current,
@@ -49,10 +43,7 @@ export const getProjectBySlug = unstable_cache(
   }
 `;
 
-    const project = await createQuery<Project[]>(query);
+  const project = await createQuery<Project[]>(query);
 
-    return project.length ? project[0] : null;
-  },
-  ["project-slug-data"],
-  { revalidate: 3600 },
-);
+  return project.length ? project[0] : null;
+};
