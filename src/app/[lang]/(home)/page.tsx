@@ -28,14 +28,11 @@ export default async function Home({ params }: RouteParams) {
         <div className="flex flex-col gap-8">
           <div className="w-fit overflow-hidden rounded">
             <Image
-              src={urlForImage(profileData.avatarImage)
-                .width(100)
-                .height(100)
-                .format("webp")
-                .url()}
+              className="h-24 w-24 object-cover"
+              src={urlForImage(profileData.avatarImage).format("webp").url()}
               alt={profileData.name}
-              width={100}
-              height={100}
+              width={1000}
+              height={1000}
             />
           </div>
           <div className="max-w-[800px]">
