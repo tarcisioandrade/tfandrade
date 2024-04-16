@@ -62,7 +62,7 @@ const MenuLinks = ({ trigger }: Props) => {
 
       <li className="last:border-b last:border-b-zinc-800 odd:border-y odd:border-y-zinc-800">
         <LinkWithLocale
-          href={{ pathname: "/skills", query: { category: "all" } }}
+          href={{ pathname: "/skills" }}
           className={cn(
             "group block px-8 py-5 text-zinc-500 transition-all hover:bg-zinc-800/20",
             pathname.includes("skills") && "bg-zinc-800/20 text-white",
