@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
+import { useScopedI18n } from "@/locales/client";
 import { ArrowLeft } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 const BackButton = () => {
   const router = useRouter();
-  const t = useTranslations("buttons");
+  const t = useScopedI18n("buttons");
 
   return (
     <button

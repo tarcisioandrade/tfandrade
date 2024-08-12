@@ -2,12 +2,12 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { useScopedI18n } from "@/locales/client";
 import { useFormStatus } from "react-dom";
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
-  const t = useTranslations("contactPage.form");
+  const t = useScopedI18n("contactPage.form");
 
   return (
     <button
@@ -18,7 +18,7 @@ const SubmitButton = () => {
       )}
       disabled={pending}
     >
-      {pending ? t("buttonSeding") : t("button")}
+      {pending ? t("buttonSending") : t("button")}
     </button>
   );
 };

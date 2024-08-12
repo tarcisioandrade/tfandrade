@@ -1,9 +1,7 @@
 import { Skill } from "../interfaces/sanity";
 import { createQuery } from "@/lib/createQuery";
 
-export const getSkills = async (language: string = "pt") => {
-  const locale = language.split("-")[0];
-
+export const getSkills = async (locale: string = "pt") => {
   const query = ` *[_type == "skill"] {
     ...,
     category -> {

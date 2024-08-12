@@ -3,8 +3,8 @@
 import React from "react";
 import LinkWithLocale from "./LinkWithLocale";
 import { cn } from "@/lib/utils";
+import { useScopedI18n } from "@/locales/client";
 import { Code2, FolderGit2, Home, Mail } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const MenuLinks = ({ trigger }: Props) => {
-  const t = useTranslations("linksNavigation");
+  const t = useScopedI18n("linksNavigation");
   const pathname = usePathname();
 
   const isHomePage =
@@ -20,8 +20,6 @@ const MenuLinks = ({ trigger }: Props) => {
     !pathname.includes("skills") &&
     !pathname.includes("contact");
 
-  // Motivo de eu não ter criado uma lista com os links e ter feito um map para nao repetir cada li:
-  // O next-intl ainda não oferece uma typagem para o href
   return (
     <ul>
       <li className="last:border-b last:border-b-zinc-800 odd:border-y odd:border-y-zinc-800">

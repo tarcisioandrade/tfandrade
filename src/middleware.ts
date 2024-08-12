@@ -1,15 +1,16 @@
-import { locales, pathnames } from "./locale-config";
-import createMiddleware from "next-intl/middleware";
+import { locales } from "./locale-config";
+import { createI18nMiddleware } from "next-international/middleware";
+import { NextRequest } from "next/server";
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const I18nMiddleware = createI18nMiddleware({
   locales,
-  pathnames,
-  // Used when no locale matches
-  defaultLocale: "pt-BR",
+  defaultLocale: "pt",
 });
 
+export function middleware(request: NextRequest) {
+  return I18nMiddleware(request);
+}
+
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(pt-BR|en-US)/:path*"],
+  matcher: ["/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)"],
 };

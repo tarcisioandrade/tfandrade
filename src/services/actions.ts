@@ -5,16 +5,13 @@ export const contactFormSubmit = async (prevState: any, formData: FormData) => {
   const name = formData.get("name");
   const message = formData.get("message");
 
-  try {
-    await fetch("https://formspree.io/f/xoqberera", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
-    return { success: true };
-  } catch (error) {
-    return { error: true };
-  }
+  const res = await fetch("https://formspree.io/f/xrbzkroj", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, message }),
+  });
+  if (!res.ok) return { error: true };
+  return { success: true };
 };

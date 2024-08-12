@@ -1,3 +1,3 @@
 export interface RouteParams {
-  params: { lang: string };
+  params: { locale: "en" | "pt" };
 }

@@ -1,9 +1,7 @@
 import { CategoryFilters } from "@/interfaces/sanity";
 import { createQuery } from "@/lib/createQuery";
 
-export const getCategoriesFilters = async (language: string = "pt") => {
-  const locale = language.split("-")[0];
-
+export const getCategoriesFilters = async (locale: string = "pt") => {
   const query = `*[_type == "tagCategory" && name != "others" && name != "fullstack" && name != "mobile"] {
       _id,
       name,
