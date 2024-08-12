@@ -1,9 +1,7 @@
 import { Project } from "../interfaces/sanity";
 import { createQuery } from "@/lib/createQuery";
 
-export const getProjects = async (language: string = "pt") => {
-  const locale = language.split("-")[0] ?? language;
-
+export const getProjects = async (locale: string = "pt") => {
   const query = `
   *[_type == "projects" && published == true] {
     ...,
@@ -21,9 +19,7 @@ export const getProjects = async (language: string = "pt") => {
   return projects;
 };
 
-export const getProjectBySlug = async (slug: string, language = "pt") => {
-  const locale = language.split("-")[0];
-
+export const getProjectBySlug = async (slug: string, locale = "pt") => {
   const query = `
   *[_type == "projects" && slug.current == "${slug}" && published == true] {
     ...,

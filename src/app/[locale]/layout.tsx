@@ -4,23 +4,20 @@ import MobileBar from "@/components/MobileBar";
 import Sidebar from "@/components/Sidebar";
 import { locales } from "@/locale-config";
 import type { Metadata } from "next";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import { Outfit } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
 
 import { DOMAIN_URL } from "@/constants";
+import { I18nProviderClient } from "@/locales/client";
+import { getCurrentLocale } from "@/locales/server";
+import { setStaticParamsLocale } from "next-international/server";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string; lang: string };
-}): Promise<Metadata> {
-  const locale = await getLocale();
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = getCurrentLocale();
 
   return {
     description: "Site Portfólio",
@@ -47,28 +44,26 @@ export default function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { locale: string };
 }) {
-  if (!locales.includes(params.lang)) notFound();
-
-  // No momento é necessario usar isso em todas os layouts e pages para poder gerar páginas staticas na build;
-  // Saiba mais no link: https://next-intl-docs.vercel.app/docs/getting-started/app-router#static-rendering
-  unstable_setRequestLocale(params.lang);
-  const messages = useMessages();
+  if (!locales.includes(params.locale)) notFound();
+  setStaticParamsLocale(params.locale);
 
   return (
-    <html lang={params.lang}>
+    <html lang={params.locale}>
       <body className={outfit.className}>
-        <NextIntlClientProvider messages={messages}>
+        <I18nProviderClient locale={params.locale}>
           <MobileBar>
             <MenuMobile />
           </MobileBar>
           {/* DIV TO FIX:HEADER FIXED HEIGHT */}
           <div className="invisible h-16 lg:hidden" />
-          <Sidebar />
+          <I18nProviderClient locale={params.locale}>
+            <Sidebar />
+          </I18nProviderClient>
           <main className="lg:pl-[250px]">{children}</main>
           <Footer />
-        </NextIntlClientProvider>
+        </I18nProviderClient>
       </body>
     </html>
   );

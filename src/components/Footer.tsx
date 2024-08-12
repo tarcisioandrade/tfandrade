@@ -1,8 +1,8 @@
 import React from "react";
-import { useTranslations } from "next-intl";
+import { getScopedI18n } from "@/locales/server";
 
-const Footer = () => {
-  const t = useTranslations("footer");
+const Footer = async () => {
+  const t = await getScopedI18n("footer");
 
   return (
     <footer className="h-24 lg:pl-[250px]">

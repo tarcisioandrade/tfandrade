@@ -1,32 +1,25 @@
 import React from "react";
 import ProjectItem from "@/components/ProjectItem";
 import Section from "@/components/Section";
+import { RouteParams } from "@/interfaces/route";
+import { getCurrentLocale, getScopedI18n } from "@/locales/server";
 import { getProjects } from "@/services/getProjects";
 import { Metadata } from "next";
-import {
-  getLocale,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
+import { setStaticParamsLocale } from "next-international/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string };
-}): Promise<Metadata> {
-  const t = await getTranslations("linksNavigation");
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getScopedI18n("linksNavigation");
 
   return {
     title: `Tarcisio | ${t("projects")}`,
   };
 }
 
-const ProjectsPage = async ({ params }: { params: { lang: string } }) => {
-  unstable_setRequestLocale(params.lang);
-
-  const locale = await getLocale();
+const ProjectsPage = async ({ params }: RouteParams) => {
+  setStaticParamsLocale(params.locale);
+  const locale = getCurrentLocale();
   const projects = await getProjects(locale);
-  const t = await getTranslations("sectionTitles");
+  const t = await getScopedI18n("sectionTitles");
 
   return (
     <Section>

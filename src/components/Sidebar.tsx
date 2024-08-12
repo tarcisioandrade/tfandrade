@@ -1,11 +1,11 @@
 import React from "react";
 import LinkWithLocale from "./LinkWithLocale";
 import MenuLinks from "./MenuLinks";
+import { getCurrentLocale } from "@/locales/server";
 import { getProfileData } from "@/services/getProfileData";
-import { getLocale } from "next-intl/server";
 
 const Sidebar = async () => {
-  const locale = await getLocale();
+  const locale = getCurrentLocale();
   const profileData = await getProfileData(locale);
 
   return (

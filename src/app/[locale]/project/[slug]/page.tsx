@@ -4,14 +4,11 @@ import ButtonLink from "@/components/ButtonLink";
 import Section from "@/components/Section";
 import TechnologyTags from "@/components/TechnologyTags";
 import { DOMAIN_URL } from "@/constants";
+import { getCurrentLocale, getI18n } from "@/locales/server";
 import { getProjectBySlug, getProjects } from "@/services/getProjects";
 import { urlForImage } from "@sanity-local/lib/image";
 import { Metadata } from "next";
-import {
-  getLocale,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -26,10 +23,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string; lang: string };
+  params: { slug: string; locale: string };
 }): Promise<Metadata> {
-  const project = await getProjectBySlug(params.slug, params.lang);
-  const locale = await getLocale(); // /pt-BR, /en-US
+  const project = await getProjectBySlug(params.slug, params.locale);
+  const locale = getCurrentLocale();
 
   if (!project) notFound();
 
@@ -48,12 +45,11 @@ export async function generateMetadata({
 const ProjectPage = async ({
   params,
 }: {
-  params: { slug: string; lang: string };
+  params: { slug: string; locale: string };
 }) => {
-  unstable_setRequestLocale(params.lang);
-
-  const project = await getProjectBySlug(params.slug, params.lang);
-  const t = await getTranslations();
+  setStaticParamsLocale(params.locale);
+  const project = await getProjectBySlug(params.slug, params.locale);
+  const t = await getI18n();
 
   if (!project) {
     notFound();

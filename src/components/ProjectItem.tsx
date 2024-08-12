@@ -10,8 +10,6 @@ type Props = {
 
 const ProjectItem = ({ project }: Props) => {
   return (
-    // @ts-expect-error
-    // TODO: A Lib esta com o erro de typagem em rotas dinamicas ex: rota/[slug]
     <LinkWithLocale href={`/project/${project.slug}`} className="group block">
       <div className="overflow-hidden rounded-lg xl:max-h-[313px] xl:max-w-[448px]">
         <Image

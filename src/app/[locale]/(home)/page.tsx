@@ -6,21 +6,18 @@ import SkillBadge from "@/components/SkillBadge";
 import SocialButtons from "@/components/SocialButtons";
 import SwitchLanguage from "@/components/SwitchLanguage";
 import { RouteParams } from "@/interfaces/route";
+import { getCurrentLocale, getI18n } from "@/locales/server";
 import { getProfileData } from "@/services/getProfileData";
 import { urlForImage } from "@sanity-local/lib/image";
-import {
-  getLocale,
-  getTranslations,
-  unstable_setRequestLocale,
-} from "next-intl/server";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 
 export default async function Home({ params }: RouteParams) {
-  unstable_setRequestLocale(params.lang);
+  setStaticParamsLocale(params.locale);
 
-  const profileData = await getProfileData(params.lang);
-  const t = await getTranslations();
-  const locale = await getLocale();
+  const profileData = await getProfileData(params.locale);
+  const t = await getI18n();
+  const locale = getCurrentLocale();
 
   return (
     <>

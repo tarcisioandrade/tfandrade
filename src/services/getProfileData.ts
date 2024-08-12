@@ -1,9 +1,7 @@
 import { PageInfo } from "../interfaces/sanity";
 import { createQuery } from "@/lib/createQuery";
 
-export const getProfileData = async (language: string = "pt") => {
-  const locale = language.split("-")[0];
-
+export const getProfileData = async (locale: string = "pt") => {
   const query = `*[_type == "pageInfo"][0] {
     ...,
     "intro": intro.${locale},

@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import SubmitButton from "./SubmitButton";
 import { Toast, toastHandler } from "./Toast";
-import { useTranslations } from "next-intl";
+import { useScopedI18n } from "@/locales/client";
 import { useFormState } from "react-dom";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 const Form = ({ formAction }: Props) => {
   const [state, action] = useFormState(formAction, { error: null });
-  const t = useTranslations("contactPage");
+  const t = useScopedI18n("contactPage");
 
   useEffect(() => {
     if (!!state.error)
@@ -25,11 +25,10 @@ const Form = ({ formAction }: Props) => {
     if (!!state.success) {
       toastHandler.show({
         type: "success",
-        title: t("toast.succes.title"),
-        message: t("toast.succes.message"),
+        title: t("toast.success.title"),
+        message: t("toast.success.message"),
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
